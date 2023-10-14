@@ -1,122 +1,117 @@
-# NMAP Cheat Sheet 🛠️👨‍💻
+Certainly, here's your Nmap cheat sheet in Markdown format. You can copy this and upload it to your GitHub repository.
 
-A comprehensive guide to using Nmap for network scanning.
+```markdown
+# NMAP Cheat Sheet
 
 ## Table of Contents
 
-1. [Introduction](#introduction)
-2. [Ping Scanning](#ping-scanning)
-3. [ARP Scanning](#arp-scanning)
-4. [SYN Scanning](#syn-scanning)
-5. [UDP Scanning](#udp-scanning)
-6. [Useful Nmap Switches](#useful-nmap-switches)
-7. [Identifying OS and Applications](#identifying-os-and-applications)
-8. [Nmap Scripts](#nmap-scripts)
-9. [Batch Scripts](#batch-scripts)
+1. [Ping Scanning](#ping-scanning)
+2. [ARP Scanning](#arp-scanning)
+3. [SYN Scanning](#syn-scanning)
+4. [UDP Scanning](#udp-scanning)
+5. [Useful Nmap Switches](#useful-nmap-switches)
+6. [Identifying OS and Applications](#identifying-os-and-applications)
+7. [Nmap Scripts](#nmap-scripts)
+8. [Batch Script for Nmap](#batch-script-for-nmap)
 
 ---
 
-### Introduction 📖
+## Ping Scanning
 
-Nmap ("Network Mapper") is an open-source tool for network exploration and security auditing. It was designed to rapidly scan large networks, but it also works well against single hosts.
-
----
-
-### Ping Scanning 🏓
-
-Ping scans are used for checking if the target is alive and responds to ICMP packets.
-
-\`\`\`bash
-nmap -sn 192.168.10.1
-nmap -sP 192.168.10.2
-\`\`\`
+- `nmap -sn 192.168.10.1`
+- `nmap -sP 192.168.10.2`
 
 ---
 
-### ARP Scanning 🌐
+## ARP Scanning
 
-ARP (Address Resolution Protocol) scans are particularly effective in LAN environments. It is non-intrusive and fast.
+`nmap -sP -PR 192.168.10.1`
 
-\`\`\`bash
-nmap -sP -PR 192.168.10.1
-\`\`\`
-> **Tip**: Press the spacebar to show the current progression of the scan.
+> **Note**: Press the spacebar to show the current progression of the scan.
 
 ---
 
-### SYN Scanning 🚀
+## SYN Scanning
 
-Also known as half-open scanning, SYN scans are less likely to be detected compared to full TCP connection scans but still effective for port identification.
-
-\`\`\`bash
-nmap -sS 192.168.10.1
-\`\`\`
+`nmap -sS 192.168.10.1`
 
 ---
 
-### UDP Scanning 🚁
+## UDP Scanning
 
-UDP scans are used for identifying open UDP ports. Note that UDP scans are generally slower than TCP scans.
-
-\`\`\`bash
-nmap -sU 192.168.10.1
-\`\`\`
+`nmap -sU 192.168.10.1`
 
 ---
 
-### Useful Nmap Switches 🎛️
+## Useful Nmap Switches
 
-Here are some Nmap switches for various purposes:
-
-- `-h`: Display help menu
-- `-v`: Verbose output
-- `-vv`: Very verbose output
-- `-n`: No DNS resolution
-- `-T`: Timing options (0-5)
-- `-p`: Specify port or port range
-- `-o`: Output scan to file
-
----
-
-### Identifying OS and Applications 🖥️
-
-Identifying the operating system and applications running on a network can provide valuable information during an assessment.
-
-- `-sV`: Version detection
-- `-O`: OS detection
-- `-A`: Advanced scan options
-- `--osscan-guess`: More aggressive OS guessing
+- `-h` : Help
+- `-v` : Verbose
+- `-vv` : Very Verbose
+- `-n` : No DNS Reverse Lookup
+- `-T` : Sets the speed of the scan (`-T5` being the fastest, `-T0` the slowest)
+- `-p` : Specify ports
+  - `-p 80` : Specific port
+  - `-p 1-10` : Range of ports
+  - `-p-` : All ports
+- `-o` : To output a file
 
 ---
 
-### Nmap Scripts 📜
+## Identifying OS and Applications
 
-Nmap has a powerful scripting engine that can perform a wide range of tasks.
+- `-sV` : Enable Version Detection
+- `-O` : Enable OS Detection
+- `-A` : Enable OS Detection, Version Detection, Script Scanning, and Traceroute
+- `--osscan-guess` : Aggressive OS guessing
+
+---
+
+## Nmap Scripts
 
 **Syntax**: `nmap —script scriptname targetIP`
 
-\`\`\`bash
-nmap —script http-headers 192.168.10.1
-nmap —script smtp-commands 192.168.10.1
-\`\`\`
+Examples:
 
-> **More Info**: [How to Use Nmap Script Engine (NSE) Scripts in Linux](https://www.tecmint.com/use-nmap-script-engine-nse-scripts-in-linux/)
+- `nmap —script http-headers 192.168.10.1`
+- `nmap —script smtp-commands 192.168.10.1`
+- `nmap -sV --script=banner 192.168.10.1`
+- `nmap -sV --script=smb* 192.168.10.1`
+- `nmap --script=http-title 192.168.10.1`
+- `nmap --script=http-enum 192.168.10.0/24`
+
+> [How to Use Nmap Script Engine (NSE) Scripts in Linux](https://www.tecmint.com/use-nmap-script-engine-nse-scripts-in-linux/)
 
 ---
 
-### Batch Scripts 📚
+## Batch Script for Nmap
 
-Automating Nmap scans can save a lot of time. Here's how you can create your own batch script for Nmap.
+1. First, download Neovim or your favorite text editor.
+2. Create a file named `nmapScan.sh`.
 
-1. Download and install `neovim` or your favorite text editor.
-2. Create a script named `nmapScan.sh`.
-3. Make the script executable.
-4. Run the script.
-
-\`\`\`bash
+```bash
 #!/bin/bash
 
 nmap -sT -p 1-10000 -v -v -T5 -sV -O --osscan-guess --script=banner -oN 192.168.10.1TCP.txt 192.168.10.1
 nmap -sU -p 1-500 -v -v --scan-delay 1s -sV --script=banner -oN 192.168.10.1UDP.txt 192.168.10.1
-\`\`\`
+nmap -sT -p 1-10000 -v -v -T5 -sV -O --osscan-guess --script=banner -oN 192.168.10.2TCP.txt 192.168.10.2
+nmap -sU -p 1-500 -v -v --scan-delay 1s -sV --script=banner -oN 192.168.10.2UDP.txt 192.168.10.2
+```
 
+3. Save and exit.
+4. Make the script executable:
+
+```bash
+sudo chmod +x nmapScan.sh
+```
+
+5. Run the script:
+
+```bash
+sudo ./nmapScan.sh
+```
+
+---
+```
+
+Feel free to modify or add any additional information!
