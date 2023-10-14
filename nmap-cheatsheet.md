@@ -1,5 +1,3 @@
-
-```markdown
 # NMAP Cheat Sheet 🛠️👨‍💻
 
 A comprehensive guide to using Nmap for network scanning.
@@ -28,10 +26,10 @@ Nmap ("Network Mapper") is an open-source tool for network exploration and secur
 
 Ping scans are used for checking if the target is alive and responds to ICMP packets.
 
-```bash
+\`\`\`bash
 nmap -sn 192.168.10.1
 nmap -sP 192.168.10.2
-```
+\`\`\`
 
 ---
 
@@ -39,9 +37,9 @@ nmap -sP 192.168.10.2
 
 ARP (Address Resolution Protocol) scans are particularly effective in LAN environments. It is non-intrusive and fast.
 
-```bash
+\`\`\`bash
 nmap -sP -PR 192.168.10.1
-```
+\`\`\`
 > **Tip**: Press the spacebar to show the current progression of the scan.
 
 ---
@@ -50,9 +48,9 @@ nmap -sP -PR 192.168.10.1
 
 Also known as half-open scanning, SYN scans are less likely to be detected compared to full TCP connection scans but still effective for port identification.
 
-```bash
+\`\`\`bash
 nmap -sS 192.168.10.1
-```
+\`\`\`
 
 ---
 
@@ -60,9 +58,9 @@ nmap -sS 192.168.10.1
 
 UDP scans are used for identifying open UDP ports. Note that UDP scans are generally slower than TCP scans.
 
-```bash
+\`\`\`bash
 nmap -sU 192.168.10.1
-```
+\`\`\`
 
 ---
 
@@ -97,10 +95,10 @@ Nmap has a powerful scripting engine that can perform a wide range of tasks.
 
 **Syntax**: `nmap —script scriptname targetIP`
 
-```bash
+\`\`\`bash
 nmap —script http-headers 192.168.10.1
 nmap —script smtp-commands 192.168.10.1
-```
+\`\`\`
 
 > **More Info**: [How to Use Nmap Script Engine (NSE) Scripts in Linux](https://www.tecmint.com/use-nmap-script-engine-nse-scripts-in-linux/)
 
@@ -115,12 +113,10 @@ Automating Nmap scans can save a lot of time. Here's how you can create your own
 3. Make the script executable.
 4. Run the script.
 
-```bash
+\`\`\`bash
 #!/bin/bash
 
 nmap -sT -p 1-10000 -v -v -T5 -sV -O --osscan-guess --script=banner -oN 192.168.10.1TCP.txt 192.168.10.1
 nmap -sU -p 1-500 -v -v --scan-delay 1s -sV --script=banner -oN 192.168.10.1UDP.txt 192.168.10.1
-```
-```
+\`\`\`
 
-Feel free to copy this updated cheat sheet to your GitHub repository. Happy hacking! 😊👨‍💻📚
