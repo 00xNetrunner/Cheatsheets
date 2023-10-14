@@ -4,16 +4,11 @@
 
 ## Table of Contents
 
-## Table of Contents
-
 - [Preliminary Commands & Information Retrieval](#preliminary-commands--information-retrieval)
 - [Capture & Conversion Phase](#capture--conversion-phase)
 - [Additional Scans & Information](#additional-scans--information)
 - [Cracking Phase](#cracking-phase)
 - [5GHz Network Capturing Cheat Sheet](#5ghz-network-capturing-cheat-sheet)
-
-
----
 
 ## Preliminary Commands & Information Retrieval
 
