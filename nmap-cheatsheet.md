@@ -1,6 +1,3 @@
-Certainly, here's your Nmap cheat sheet in Markdown format. You can copy this and upload it to your GitHub repository.
-
-```markdown
 # NMAP Cheat Sheet
 
 ## Table of Contents
@@ -18,14 +15,18 @@ Certainly, here's your Nmap cheat sheet in Markdown format. You can copy this an
 
 ## Ping Scanning
 
-- `nmap -sn 192.168.10.1`
-- `nmap -sP 192.168.10.2`
+\`\`\`bash
+nmap -sn 192.168.10.1
+nmap -sP 192.168.10.2
+\`\`\`
 
 ---
 
 ## ARP Scanning
 
-`nmap -sP -PR 192.168.10.1`
+\`\`\`bash
+nmap -sP -PR 192.168.10.1
+\`\`\`
 
 > **Note**: Press the spacebar to show the current progression of the scan.
 
@@ -33,13 +34,17 @@ Certainly, here's your Nmap cheat sheet in Markdown format. You can copy this an
 
 ## SYN Scanning
 
-`nmap -sS 192.168.10.1`
+\`\`\`bash
+nmap -sS 192.168.10.1
+\`\`\`
 
 ---
 
 ## UDP Scanning
 
-`nmap -sU 192.168.10.1`
+\`\`\`bash
+nmap -sU 192.168.10.1
+\`\`\`
 
 ---
 
@@ -73,12 +78,14 @@ Certainly, here's your Nmap cheat sheet in Markdown format. You can copy this an
 
 Examples:
 
-- `nmap —script http-headers 192.168.10.1`
-- `nmap —script smtp-commands 192.168.10.1`
-- `nmap -sV --script=banner 192.168.10.1`
-- `nmap -sV --script=smb* 192.168.10.1`
-- `nmap --script=http-title 192.168.10.1`
-- `nmap --script=http-enum 192.168.10.0/24`
+\`\`\`bash
+nmap —script http-headers 192.168.10.1
+nmap —script smtp-commands 192.168.10.1
+nmap -sV --script=banner 192.168.10.1
+nmap -sV --script=smb* 192.168.10.1
+nmap --script=http-title 192.168.10.1
+nmap --script=http-enum 192.168.10.0/24
+\`\`\`
 
 > [How to Use Nmap Script Engine (NSE) Scripts in Linux](https://www.tecmint.com/use-nmap-script-engine-nse-scripts-in-linux/)
 
@@ -89,29 +96,27 @@ Examples:
 1. First, download Neovim or your favorite text editor.
 2. Create a file named `nmapScan.sh`.
 
-```bash
+\`\`\`bash
 #!/bin/bash
 
 nmap -sT -p 1-10000 -v -v -T5 -sV -O --osscan-guess --script=banner -oN 192.168.10.1TCP.txt 192.168.10.1
 nmap -sU -p 1-500 -v -v --scan-delay 1s -sV --script=banner -oN 192.168.10.1UDP.txt 192.168.10.1
 nmap -sT -p 1-10000 -v -v -T5 -sV -O --osscan-guess --script=banner -oN 192.168.10.2TCP.txt 192.168.10.2
 nmap -sU -p 1-500 -v -v --scan-delay 1s -sV --script=banner -oN 192.168.10.2UDP.txt 192.168.10.2
-```
+\`\`\`
 
 3. Save and exit.
 4. Make the script executable:
 
-```bash
+\`\`\`bash
 sudo chmod +x nmapScan.sh
-```
+\`\`\`
 
 5. Run the script:
 
-```bash
+\`\`\`bash
 sudo ./nmapScan.sh
-```
+\`\`\`
 
 ---
-```
 
-Feel free to modify or add any additional information!
