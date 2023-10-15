@@ -1,0 +1,39 @@
+<h2 id="5ghz">5GHz Network Capturing Cheat Sheet 📶</h2>
+<ul>
+    <li><strong>1. Install Necessary Tools</strong></li>
+    <code>sudo apt-get install hcxdumptool hcxtools</code>
+
+    <li><strong>2. Check for 5GHz Support</strong></li>
+    <code>iw list</code>
+
+    <li><strong>3. Enable Monitor Mode</strong></li>
+    <code>sudo ip link set wlan0 down</code>
+    <code>sudo iw dev wlan0 set type monitor</code>
+    <code>sudo ip link set wlan0 up</code>
+
+    <li><strong>4. Set to 5GHz Channel</strong></li>
+    <code>sudo iw dev wlan0 set channel 36</code>
+
+    <li><strong>5. Identify Target Networks</strong></li>
+    <code>sudo hcxdumptool -i wlan0 --scan</code>
+
+    <li><strong>6. Capture Traffic</strong></li>
+    <code>sudo hcxdumptool -i wlan0 --enable_status=1 -o output.pcapng --filterlist=filterlist.txt --filtermode=2</code>
+
+    <li><strong>7. Analyze Captured Traffic</strong></li>
+    <code>hcxpcaptool -z output.hccapx output.pcapng</code>
+
+    <li><strong>8. Troubleshooting</strong></li>
+    <code>sudo iw reg get</code>
+    <code>sudo iw reg set US</code>
+
+    <li><strong>9. Switch Back to 2.4GHz</strong></li>
+    <code>sudo ip link set wlan0 down</code>
+    <code>sudo iw dev wlan0 set type monitor</code>
+    <code>sudo iw dev wlan0 set channel 6</code>
+    <code>sudo ip link set wlan0 up</code>
+
+    <li><strong>10. List 2.4GHz Channels</strong></li>
+    <code>iw phy phy0 channels</code>
+    <code>iwlist wlan0 channel</code>
+</ul>
