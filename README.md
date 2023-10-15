@@ -1,4 +1,4 @@
-# Cheatsheet Repository
+# Cheatsheet Repository 
 
 This repository contains various cybersecurity related cheat sheets for reference.
 
@@ -6,13 +6,15 @@ This repository contains various cybersecurity related cheat sheets for referenc
 
 - [Aircrack-ng](aircrack.md) - Cheatsheet for using Aircrack-ng to audit wireless networks.
 
-- [GPG](gpg.md) - Commands for GPG encryption, decryption, key management, and more. 
+- [Bettercap](bettercap.md) - Commands for network reconnaissance, sniffing, ARP spoofing, MITM attacks with Bettercap.
 
-- [Hashcat](hashcat.md) - Useful Hashcat commands and examples for password cracking.
+- [GPG](gpg.md) - Commands for GPG encryption, decryption, key management, and more.
+
+- [Hashcat](hashcat.md) - Useful Hashcat commands and examples for password cracking.  
 
 - [Nmap](nmap.md) - Cheatsheet for Nmap scanning and scripting.
 
-- [Reformat USB](reformat-usb.md) - Steps for reformatting a USB drive on Linux and Windows. 
+- [Reformat USB](reformat-usb.md) - Steps for reformatting a USB drive on Linux and Windows.
 
 - [WiFi Handshake](wifi-handshake.md) - Capturing and cracking WiFi handshakes.
 
