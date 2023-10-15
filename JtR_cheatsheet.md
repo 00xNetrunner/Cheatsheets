@@ -1,10 +1,9 @@
-
-```markdown
 # John the Ripper Cheatsheet
 
 John the Ripper, often called "John," is an open-source and highly flexible password-cracking tool. It supports multiple algorithms and is available on both Windows and Linux.
 
 ## Table of Contents
+
 - [Dictionary Attacks](#dictionary-attacks)
 - [Brute Force Attacks](#brute-force-attacks)
 - [Tips & Additional Commands](#tips--additional-commands)
@@ -19,11 +18,11 @@ John the Ripper, often called "John," is an open-source and highly flexible pass
 john --wordlist=dictionary.txt hashfile
 ```
 
-- **wordlist**: This option specifies the dictionary file you'd like to use.
+- **wordlist**: This option specifies the dictionary file you'd like to use. 
 
 **Example:**
 
-```bash
+```bash  
 john --wordlist=passwords.txt hashes.txt
 ```
 
@@ -48,7 +47,7 @@ john --wordlist=words.txt --rules=best64.rule hashes.txt
 ### Basic Brute Force
 
 ```bash
-john --incremental hashfile
+john --incremental hashfile 
 ```
 
 **Example:**
@@ -59,11 +58,11 @@ john --incremental hashes.txt
 
 ### Specify Charset
 
-```bash
+```bash 
 john --incremental=Digits hashfile
 ```
 
-- Here, you can define custom charsets like `Digits`, `Alpha`, `AlphaNum`, etc.
+- Here, you can define custom charsets like `Digits`, `Alpha`, `AlphaNum`, etc. 
 
 ### Brute Force with Custom Charset
 
@@ -84,14 +83,9 @@ john --incremental=Custom --mask='?a?a?a?a?a' hashes.txt
 - **Resume Cracking**: Use `john --restore` to resume cracking.
 - **Show Cracked Passwords**: Run `john --show hashfile` to display cracked passwords.
 - **List Supported Formats**: Use `john --list=formats` to see all supported hash formats.
-- **Performance Tuning**: Use `-fork=N` to distribute the task over multiple processes.
+- **Performance Tuning**: Use `-fork=N` to distribute the task over multiple processes.  
 - **Verbose Mode**: Add `vv` for a detailed output.
 - **GPU Acceleration**: Versions like John the Ripper Pro support GPU acceleration with `-device=opencl`.
 - **Manual Page**: Check `man john` for a complete list of options.
 
 ---
-
-Feel free to reach out for any additions or modifications.
-```
-
-You can save this content into a `.md` file, such as `john-the-ripper-cheatsheet.md`, and then upload it to GitHub. The Markdown will format the text and make it look organized and easily readable.
