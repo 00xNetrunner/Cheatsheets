@@ -4,7 +4,7 @@ This repository contains various cybersecurity related cheat sheets for referenc
 
 ## Contents 🗂
 
-- [Aircrack-ng](aircrack.md) - Cheatsheet for using Aircrack-ng to audit wireless networks. 📡
+- [Aircrack-ng](Aircrack-ng.md) - Cheatsheet for using Aircrack-ng to audit wireless networks. 📡
 
 - [Bettercap](bettercap.md) - Commands for network reconnaissance, sniffing, ARP spoofing, MITM attacks with Bettercap. 🕵️
 
