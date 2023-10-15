@@ -1,17 +1,16 @@
-Here is the HTML converted to Markdown for use on GitHub:
+You're right, my mistake. Here is the Markdown with the titles unboxed and the commands in code blocks:
 
-```markdown
 # Wi-Fi Handshake Capture & Crack Cheatsheet 📡
 
 ## Table of Contents 📋
 
 - [Preliminary Commands & Information Retrieval](#preliminary)
-- [Capture & Conversion Phase](#capture)  
-- [Additional Scans & Information](#additional)
+- [Capture & Conversion Phase](#capture)
+- [Additional Scans & Information](#additional) 
 - [Cracking Phase](#cracking)
 - [5GHz Network Capturing Cheat Sheet](#5ghz)
 
-## Preliminary Commands & Information Retrieval 🛠
+## Preliminary Commands & Information Retrieval
 
 **Secure Copy from Remote Device**
 
@@ -21,7 +20,7 @@ scp -r root@172.16.42.1:/root/example.pcapng /home/username/Desktop
 
 📖 Downloads files from remote devices using SCP.
 
-**Check Wireless Interfaces**  
+**Check Wireless Interfaces** 
 
 ```
 iwconfig
@@ -31,25 +30,25 @@ iwconfig
 
 **Kill Interfering Services**
 
-```
+```  
 airmon-ng check kill
 ```
 
 📖 Stops services that might interfere with wireless tools.
 
-## Capture & Conversion Phase 🎯
+## Capture & Conversion Phase
 
 **Set Wireless Card to Monitor Mode**
 
 ```
-sudo ip link set wlan0 down
-sudo iw wlan0 set monitor control  
+sudo ip link set wlan0 down  
+sudo iw wlan0 set monitor control
 sudo ip link set wlan0 up
 ```
 
 📖 Prepares the wireless card for capture.
 
-**Capture Handshakes with hcxdumptool**
+**Capture Handshakes with hcxdumptool** 
 
 ```
 hcxdumptool -i wlan1 -o dumpfile.pcapng --active_beacon --enable_status=15
@@ -60,22 +59,22 @@ hcxdumptool -i wlan1 -o dumpfile.pcapng --active_beacon --enable_status=15
 **Convert Captured File for Hashcat**
 
 ```
-hcxpcapngtool -o hash.hc22000 -E essidlist dumpfile.pcapng 
-```
+hcxpcapngtool -o hash.hc22000 -E essidlist dumpfile.pcapng
+``` 
 
 📖 Converts packets for password cracking.
 
-## Additional Scans & Information 📡
+## Additional Scans & Information
 
 **Scan for Nearby Networks**
 
 ```
-hcxdumptool --do_rcascan -i wlan1
+hcxdumptool --do_rcascan -i wlan1 
 ```
 
 📖 Scans and displays nearby networks.
 
-## Cracking Phase 🔐
+## Cracking Phase 
 
 **Crack with Hashcat**
 
@@ -85,7 +84,7 @@ hashcat -m 22000 hash.hc22000 wordlist.txt
 
 📖 Uses hashcat to attempt password cracks.
 
-## 5GHz Network Capturing Cheat Sheet 📶
+## 5GHz Network Capturing Cheat Sheet
 
 1. **Install Necessary Tools**
 
@@ -103,7 +102,7 @@ hashcat -m 22000 hash.hc22000 wordlist.txt
 
    ```
    sudo ip link set wlan0 down
-   sudo iw dev wlan0 set type monitor  
+   sudo iw dev wlan0 set type monitor
    sudo ip link set wlan0 up
    ```
 
@@ -143,7 +142,7 @@ hashcat -m 22000 hash.hc22000 wordlist.txt
    ```
    sudo ip link set wlan0 down
    sudo iw dev wlan0 set type monitor
-   sudo iw dev wlan0 set channel 6  
+   sudo iw dev wlan0 set channel 6
    sudo ip link set wlan0 up
    ```
 
@@ -154,6 +153,4 @@ hashcat -m 22000 hash.hc22000 wordlist.txt
     iwlist wlan0 channel
     ```
 
-```
-
-Let me know if you need any clarification or have additional requirements for the Markdown format!
+Let me know if this looks better or if you need any other changes!
