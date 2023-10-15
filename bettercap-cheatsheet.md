@@ -1,5 +1,3 @@
-Here is the Bettercap cheatsheet in Markdown format with emojis:
-
 # 🕵️‍♀️ **Bettercap Cheatsheet** 🕵️
 
 Bettercap is an indispensable tool for network reconnaissance, sniffing, and executing Man-In-The-Middle (MITM) attacks on local networks.
@@ -114,5 +112,3 @@ Bettercap is an indispensable tool for network reconnaissance, sniffing, and exe
 - Display the help menu with an overview of commands.
 
 ---
-
-Let me know if you need any changes to the formatting!
