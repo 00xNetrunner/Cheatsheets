@@ -1,143 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GPG Cheatsheet 🛡️</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        code {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            display: block;
+        }
+        pre {
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
 
-## GPG cheatsheet
+<h1>GPG Cheatsheet 🛡️</h1>
 
-### Key Management
+<h2>🔑 Key Management</h2>
 
-- **Generate a new GPG key pair:**
+<p><strong>Generate a new GPG key pair:</strong></p>
+<code>gpg --full-generate-key</code>
 
-\`\`\`bash
-gpg --full-generate-key
-\`\`\`
+<p><strong>List all keys in your GPG keyring:</strong></p>
+<code>gpg --list-keys</code>
 
-- **List all keys in your GPG keyring:**
+<p><strong>List all the secret keys in your GPG keyring:</strong></p>
+<code>gpg --list-secret-keys</code>
 
-\`\`\`bash
-gpg --list-keys
-\`\`\`
+<h2>🔒 Message Encryption and Decryption</h2>
 
-- **List all the secret keys in your GPG keyring:**
+<p><strong>Encrypt a message:</strong></p>
+<code>gpg -e -u "your-email@example.com" -r "recipient@example.com" message.txt</code>
 
-\`\`\`bash
-gpg --list-secret-keys
-\`\`\`
+<p><strong>Decrypt a message:</strong></p>
+<code>gpg -o decrypted-message.txt -d message.txt.gpg</code>
 
-# Message Encryption and Decryption
+<h2>📁 GPG Folder Encryption Cheat Sheet</h2>
 
-- **Encrypt a message:**
+<h3>Encrypting a Folder</h3>
 
-\`\`\`bash
-gpg -e -u "your-email@example.com" -r "recipient@example.com" message.txt
-This creates message.txt.gpg.
-\`\`\`
+<ol>
+    <li><strong>Create a tarball from the folder you want to encrypt:</strong></li>
+    <code>tar -czvf archive.tar.gz /path/to/folder_to_encrypt</code>
 
-- **Decrypt a message:**
+    <li><strong>Encrypt the tarball using GPG:</strong></li>
+    <code>gpg -e -r your-email@example.com archive.tar.gz</code>
+</ol>
 
-\`\`\`bash
-gpg -o decrypted-message.txt -d message.txt.gpg
-\`\`\`
+<h3>Decrypting a Folder</h3>
 
-- This creates `decrypted-message.txt`.
+<ol>
+    <li><strong>Decrypt the GPG file to a tarball:</strong></li>
+    <code>gpg -o archive.tar.gz -d archive.tar.gz.gpg</code>
 
-# GPG Folder Encryption Cheat Sheet
+    <li><strong>Extract the tarball to the original folder:</strong></li>
+    <code>tar -xzvf archive.tar.gz</code>
+</ol>
 
-## Encrypting a Folder
+<h2>✉️ Encrypting a Message for Yourself: [Different Method]</h2>
+<!-- Your content here -->
 
-1. **Create a tarball from the folder you want to encrypt:**
+<h3>Encrypting a message for yourself:</h3>
 
-    Replace **`/path/to/folder_to_encrypt`** with the path to your folder and **`archive.tar.gz`** with the desired name for your tarball.
+<ol>
+    <li><strong>Generate a Key Pair:</strong></li>
+    <code>gpg --gen-key</code>
 
-    \`\`\`bash
-    tar -czvf archive.tar.gz /path/to/folder_to_encrypt
-    \`\`\`
+    <li><strong>Encrypt the Message:</strong></li>
+    <code>gpg -e -u "Your Name" -r "Your Name" message.txt</code>
 
-2. **Encrypt the tarball using GPG:**
+    <li><strong>Decrypt the Message:</strong></li>
+    <code>gpg -d message.txt.gpg</code>
+</ol>
 
-    Replace **`your-email@example.com`** with your email and **`archive.tar.gz`** with your tarball's name. This will create an encrypted file named **`archive.tar.gz.gpg`**.
+<h2>👥 Encrypting a Message for Someone Else:</h2>
 
-    \`\`\`bash
-    gpg -e -r your-email@example.com archive.tar.gz
-    \`\`\`
+<ol>
+    <li><strong>Import Their Public Key:</strong></li>
+    <code>gpg --import theirkey.gpg</code>
 
-## Decrypting a Folder
+    <li><strong>Encrypt the Message:</strong></li>
+    <code>gpg -e -u "Your Name" -r "Their Name" message.txt</code>
+</ol>
 
-1. **Decrypt the GPG file to a tarball:**
+<h2>🔄 Exporting & Importing Keys</h2>
 
-    This will decrypt the **`archive.tar.gz.gpg`** file back to **`archive.tar.gz`**.
+<p><strong>Exporting Your Public Key:</strong></p>
 
-    \`\`\`bash
-    gpg -o archive.tar.gz -d archive.tar.gz.gpg
-    \`\`\`
+<ol>
+    <li><strong>List your keys to find the one you want to export:</strong></li>
+    <code>gpg --list-keys</code>
 
-2. **Extract the tarball to the original folder:**
+    <li><strong>Export it to a file:</strong></li>
+    <code>gpg --export -a "Your Name" > public.key</code>
+</ol>
 
-    This will extract the contents of the tarball to the current directory.
-
-    \`\`\`bash
-    tar -xzvf archive.tar.gz
-    \`\`\`
-
-Please note that the person performing the decryption and extraction will need the GPG private key that corresponds to the public key used to encrypt the file.
-
-# Encrypting a message for yourself: [Different Method]
-
-1. **Generate a Key Pair**: If you haven't already, you'll need to generate a GPG key pair. You can do this with the **`-gen-key`** option:
-
-    \`\`\`bash
-    gpg --gen-key
-    \`\`\`
-
-    Follow the prompts to set your name, email address, and passphrase.
-
-2. **Encrypt the Message**: You can now encrypt a message with your public key. For example, to encrypt a message in a file named **`message.txt`**, you can use the following command:
-
-    \`\`\`bash
-    gpg -e -u "Your Name" -r "Your Name" message.txt
-    \`\`\`
-
-    Replace "Your Name" with the name you used when generating your key pair. This will create an encrypted file named **`message.txt.gpg`**.
-
-3. **Decrypt the Message**: To decrypt the message, you can use the **`gpg`** command with the **`d`** option:
-
-    \`\`\`bash
-    gpg -d message.txt.gpg
-    \`\`\`
-
-    You'll be asked for the passphrase you used when generating your key pair.
-
-# Encrypting a message for someone else:
-
-1. **Import Their Public Key**: Before you can encrypt a message for someone else, you'll need their GPG public key. Once you have it, you can import it with the **`-import`** option:
-
-    \`\`\`bash
-    gpg --import theirkey.gpg
-    \`\`\`
-
-    Replace "theirkey.gpg" with the filename of their public key.
-
-2. **Encrypt the Message**: You can now encrypt a message with their public key. For example, to encrypt a message in a file named **`message.txt`**, you can use the following command:
-
-    \`\`\`bash
-    gpg -e -u "Your Name" -r "Their Name" message.txt
-    \`\`\`
-
-    Replace "Your Name" with your name and "Their Name" with the name associated with their public key. This will create an encrypted file named **`message.txt.gpg`**.
-
-The recipient will then be able to decrypt the message using their private key.
-
-# Exporting & Importing Keys
-
-**Exporting Your Public Key:**
-
-1. List your keys to find the one you want to export:
-
-    \`\`\`bash
-    gpg --list-keys
-    \`\`\`
-
-2. Once you've identified the key you want to export (it's usually your email address or name), use the **`-export`** option with the **`a`** (armor) flag to export it to a file:
-
-    \`\`\`bash
-    gpg --export -a "Your Name" > public.key
-    \`\`\`
-
-    Replace "Your Name" with the name or email associated with the key you want to export. This will create a file named **`public.key`** containing your public key.
+</body>
+</html>
