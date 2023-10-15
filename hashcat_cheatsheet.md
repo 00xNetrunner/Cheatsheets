@@ -1,3 +1,4 @@
+Thank you for providing the Hashcat cheatsheet in Markdown format! I have formatted it slightly for readability:
 
 ```markdown
 # 🔓 Hashcat Cheatsheet 🔑
@@ -14,65 +15,73 @@ Hashcat is a powerful password cracking tool. Here are some useful commands and 
 - [Custom Charsets](#custom-charsets)
 - [Examples](#examples)
 
----
-
 ## 🕵️‍♂️ Check GPUs
 
 - `hashcat -I` 🖥️  
-  **Note**: Check available GPUs on the system.
 
----
+**Note**: Check available GPUs on the system.
 
 ## 🗝️ Hash Types
 
-- `hashcat -m 0` 🔐  
-  **Note**: MD5.
-- `hashcat -m 1000` 🔑  
-  **Note**: NTLM.
-- `hashcat -m 2500` 🔓  
-  **Note**: WPA/WPA2.
-- `hashcat -m 22000` 🔓  
-  **Note**: WPA-PMKID-PBKDF2.
+- `hashcat -m 0` 🔐
 
----
+**Note**: MD5.
+
+- `hashcat -m 1000` 🔑  
+
+**Note**: NTLM.
+
+- `hashcat -m 2500` 🔓
+
+**Note**: WPA/WPA2. 
+
+- `hashcat -m 22000` 🔓
+
+**Note**: WPA-PMKID-PBKDF2.
 
 ## ⚔️ Attack Modes
 
-- `hashcat -a 0` 🗡️  
-  **Note**: Straight attack.
-- `hashcat -a 3` 🛡️  
-  **Note**: Brute-force attack.
+- `hashcat -a 0` 🗡️
 
----
+**Note**: Straight attack.
+
+- `hashcat -a 3` 🛡️
+
+**Note**: Brute-force attack.
 
 ## 🪄 Wordlists
 
-- `hashcat -w 4` 📘  
-  **Note**: Set workload profile.
+- `hashcat -w 4` 📘
 
----
+**Note**: Set workload profile.
 
 ## 🔨 Incremental Mode
 
-- `-increment` ♾️  
-  **Note**: Enable incremental mode.
-- `-increment-min 8`  
-  **Note**: Set minimum password length.
-- `-increment-max 12`  
-  **Note**: Set maximum password length.
+- `-increment` ♾️
 
----
+**Note**: Enable incremental mode.
+
+- `-increment-min 8` 
+
+**Note**: Set minimum password length.
+
+- `-increment-max 12`
+
+**Note**: Set maximum password length. 
 
 ## 🎯 Custom Charsets
 
-- `?d?l?u` 🎲  
-  **Note**: Digits, lowercase, uppercase letters.
-- `?s` ❇️  
-  **Note**: Special characters.
-- `?a` 🎯  
-  **Note**: All characters (lowercase, uppercase, digits, special).
+- `?d?l?u` 🎲
 
----
+**Note**: Digits, lowercase, uppercase letters.
+
+- `?s` ❇️
+
+**Note**: Special characters.  
+
+- `?a` 🎯
+
+**Note**: All characters (lowercase, uppercase, digits, special).
 
 ## 💡 Examples
 
@@ -93,9 +102,10 @@ hashcat -m 22000 hash.hc22000 --increment --increment-min 8 --increment-max 12 ?
 ```
 
 - `-increment`: Incremental mode.
-- `-increment-min 8`: Min length 8.
+- `-increment-min 8`: Min length 8. 
 - `-increment-max 12`: Max length 12.
 - `?d?d?d?d?d?d?d?d?d`: 8-12 digit incremental mask.
+
 ```
 
-You can copy this Markdown content into an `.md` file and upload it to your GitHub repository. This should make it easier to refer to your Hashcat commands.
+The Markdown formatting looks great! Let me know if you need any other changes.
