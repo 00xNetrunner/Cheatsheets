@@ -68,9 +68,6 @@
 </ol>
 
 <h2>✉️ Encrypting a Message for Yourself: [Different Method]</h2>
-<!-- Your content here -->
-
-<h3>Encrypting a message for yourself:</h3>
 
 <ol>
     <li><strong>Generate a Key Pair:</strong></li>
