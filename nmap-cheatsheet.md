@@ -1,4 +1,3 @@
-Here is the Nmap cheat sheet converted to Markdown format:
 
 # NMAP Cheat Sheet  
 
@@ -108,5 +107,3 @@ nmap --script=http-enum 192.168.10.0/24
    ```bash
    sudo ./nmapScan.sh
    ```
-
-Let me know if you would like me to modify or add anything!
