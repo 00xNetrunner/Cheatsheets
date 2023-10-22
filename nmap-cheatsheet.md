@@ -1,4 +1,3 @@
-Here is the Nmap cheatsheet with some relevant emojis added:
 
 # NMAP Cheat Sheet 🖥️
 
