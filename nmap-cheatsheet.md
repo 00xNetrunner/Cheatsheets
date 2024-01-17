@@ -107,5 +107,3 @@ sudo chmod +x nmapScan.sh
 ```bash 
 sudo ./nmapScan.sh
 ```
-
-Let me know if you would like me to add or modify any emojis!
