@@ -153,4 +153,3 @@ hashcat -m 22000 hash.hc22000 wordlist.txt
     iwlist wlan0 channel
     ```
 
-Let me know if this looks better or if you need any other changes!
