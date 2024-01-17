@@ -134,4 +134,3 @@ Now your USB drive is reformatted and ready to use!
 
 > This guide will completely erase all the data on your USB drive and prepare it for fresh use. Be sure to replace X with your disk number and Y with the desired letter for your drive.
 
-Let me know if any changes need to be made!
