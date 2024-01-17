@@ -1,3 +1,18 @@
+## :warning: Disclaimer :warning:
+
+![Educational Use](https://img.shields.io/badge/Educational-Use-blue.svg)
+![Ethical Hacking](https://img.shields.io/badge/Ethical-Hacking-brightgreen.svg)
+
+> :information_source: **The information and tools provided in this content are strictly for educational purposes only.** As an advocate for ethical hacking, I, Netrunner, strongly urge you to use the knowledge and resources shared here responsibly and within the bounds of legal frameworks. Ethical hacking is about improving security and protecting systems, not exploiting them.
+
+> :balance_scale: **It is your responsibility to ensure that any actions you take with this knowledge comply with all applicable laws and regulations.** Unauthorized hacking into systems or networks can lead to severe legal consequences. Always seek proper authorization before attempting any penetration testing.
+
+> :handshake: **Let's contribute to a safer cyber world together.**
+
+
+
+
+
 # Cheatsheet Repository 📚
 
 This repository contains various cybersecurity related cheat sheets for reference.
