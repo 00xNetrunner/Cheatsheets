@@ -103,4 +103,4 @@ hashcat -m 22000 hash.hc22000 --increment --increment-min 8 --increment-max 12 ?
 - `-increment-max 12`: Max length 12.  
 - `?d?d?d?d?d?d?d?d?d`: 8-12 digit incremental mask.
 
-```
+
