@@ -1,6 +1,3 @@
-Here is the GPG cheatsheet converted to Markdown:
-
-```markdown
 # GPG Cheatsheet 🔐
 
 ## Key Management 🔑
@@ -114,4 +111,3 @@ gpg --list-keys
 gpg --export -a "Your Name" > public.key
 ```
 
-Let me know if you need any changes!
